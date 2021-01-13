@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from './screens/home/home';
+import ListItems from './screens/listitems/listitems';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
-export default function App() {
+const Tab = createBottomTabNavigator();
+const options: StackNavigationOptions = {headerShown: false, animationEnabled: true, animationTypeForReplace: 'push'};
+
+const CategoriesStack = createStackNavigator<CategoryStackParamList>();
+
+
+function HomeTabs() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Tab.Navigator >
+      <Tab.Screen name="Inicio" component={HomeScreen} />
+      <Tab.Screen name="Mi Compra" component={HomeScreen} />
+      <Tab.Screen name="Perfil" component={HomeScreen} />
+    </Tab.Navigator>
   );
 }
+export default function App() {
+  return (
+    <NavigationContainer>
+      <CategoriesStack.Navigator screenOptions={options} >
+        <CategoriesStack.Screen name="Home" component={HomeTabs} />
+        <CategoriesStack.Screen name="ListItems" component={ListItems} />
+      </CategoriesStack.Navigator>
+    </NavigationContainer>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  );
+}
