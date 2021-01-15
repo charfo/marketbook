@@ -1,9 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Animated, Dimensions, StyleSheet, View, FlatList } from "react-native";
+import { Animated, Dimensions, FlatList, StyleSheet } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import { Cards } from "../../Transformations/components/Card";
-import  CategoryCards, { CategoryCardsEnum, categoryCard_HEIGHT as DEFAULT_CARD_HEIGHT } from "../../Transformations/components/CategoryCards";
+import CategoryCards, { CategoryCardsEnum, categoryCard_HEIGHT as DEFAULT_CARD_HEIGHT } from "../../Transformations/components/CategoryCards";
 
 export const MARGIN = 16;
 export const CARD_HEIGHT = DEFAULT_CARD_HEIGHT + MARGIN * 2;

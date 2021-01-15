@@ -5,12 +5,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/home/home';
 import ListItems from './screens/listitems/listitems';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import { Asset } from 'expo-asset';
 
 const Tab = createBottomTabNavigator();
 const options: StackNavigationOptions = {headerShown: false, animationEnabled: true, animationTypeForReplace: 'push'};
 
 const CategoriesStack = createStackNavigator<CategoryStackParamList>();
-
 
 function HomeTabs() {
   return (

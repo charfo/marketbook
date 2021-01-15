@@ -67,13 +67,9 @@ export default ({ type }: CategoryCardProps) => {
 
   return (
     <View style={styles.container}>
-
       <ImageBackground source={source} style={styles.categoryCard}>
-        <View style={{ borderRadius: 25, backgroundColor:"red" }}>
           <Text style={styles.inntertext}>{title}</Text>
-        </View>
       </ImageBackground>
-
     </View>
   );
 };

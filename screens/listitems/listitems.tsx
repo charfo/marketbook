@@ -1,10 +1,75 @@
 import React from "react";
-import { Animated, FlatList } from "react-native";
+import { Animated, FlatList, Text } from "react-native";
 
-import { Cards } from "../../Transformations/components/Card";
 import WalletCard from "../../Wallet/WalletCard";
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+
+
+
+export const assets = {
+  'lechesemi.jpg': require('../../assets/products/lechesemi.jpg'),
+  'alasdepollo.jpg': require('../../assets/products/alasdepollo.jpg'),
+  'lecheentera.jpg': require('../../assets/products/lecheentera.jpg'),
+  'lechedesnatada.jpg': require('../../assets/products/lechedesnatada.jpg'),
+  'yogurt.jpg': require('../../assets/products/yogurt.jpg'),
+  'yogurtliquido.jpg': require('../../assets/products/yogurtliquido.jpg'),
+  'flan.jpg': require('../../assets/products/flan.jpg'),
+  'quesosemi.jpg': require('../../assets/products/quesosemi.jpg'),
+  'quesocurado.jpg': require('../../assets/products/quesocurado.jpg'),
+  'quesofresco.jpg': require('../../assets/products/quesofresco.jpg'),
+  'quesoazul.jpg': require('../../assets/products/quesoazul.jpg'),
+  'platano.jpg': require('../../assets/products/platano.jpg'),
+  'manzana.jpg': require('../../assets/products/manzana.jpg'),
+  'pera.jpg': require('../../assets/products/pera.jpg'),
+  'naranja.jpg': require('../../assets/products/naranja.jpg'),
+  'lechuga.jpg': require('../../assets/products/lechuga.jpg'),
+  'espinacas.jpg': require('../../assets/products/espinacas.jpg'),
+  'salteadodeverduras.jpg': require('../../assets/products/salteadodeverduras.jpg'),
+  'parrilladadeverduras.jpg': require('../../assets/products/parrilladadeverduras.jpg'),
+  'aceitegirasol.jpg': require('../../assets/products/aceitegirasol.jpg'),
+  'aceiteoliva.jpg': require('../../assets/products/aceiteoliva.jpg'),
+  'sal.jpg': require('../../assets/products/sal.jpg'),
+  'azucar.jpg': require('../../assets/products/azucar.jpg'),
+  'macarrones.jpg': require('../../assets/products/macarrones.jpg'),
+  'arroz.jpg': require('../../assets/products/arroz.jpg'),
+  'fideos.jpg': require('../../assets/products/fideos.jpg'),
+  'espagueti.jpg': require('../../assets/products/espagueti.jpg'),
+  'pan.jpg': require('../../assets/products/pan.jpg'),
+  'pandemolde.jpg': require('../../assets/products/pandemolde.jpg'),
+  'chocolate.jpg': require('../../assets/products/chocolate.jpg'),
+  'galletas.jpg': require('../../assets/products/galletas.jpg'),
+  'tostadas.jpg': require('../../assets/products/tostadas.jpg'),
+  'cola.jpg': require('../../assets/products/cola.jpg'),
+  'zumonaranja.jpg': require('../../assets/products/zumonaranja.jpg'),
+  'zumopina.jpg': require('../../assets/products/zumopina.jpg'),
+  'agua.jpg': require('../../assets/products/agua.jpg'),
+  'cerveza.jpg': require('../../assets/products/cerveza.jpg'),
+  'gaseosa.jpg': require('../../assets/products/gaseosa.jpg'),
+  'salchichas.jpg': require('../../assets/products/salchichas.jpg'),
+  'salmonahumado.jpg': require('../../assets/products/salmonahumado.jpg'),
+  'pechugadepollo.jpg': require('../../assets/products/pechugadepollo.jpg'),
+  'chorizo.jpg': require('../../assets/products/chorizo.jpg'),
+  'salchichon.jpg': require('../../assets/products/salchichon.jpg'),
+  'jamon.jpg': require('../../assets/products/jamon.jpg'),
+  'carnepicadacerdo.jpg': require('../../assets/products/carnepicadacerdo.jpg'),
+  'pizzajamon.jpg': require('../../assets/products/pizzajamon.jpg'),
+  'pizzaqueso.jpg': require('../../assets/products/pizzaqueso.jpg'),
+  'caldodecocido.jpg': require('../../assets/products/caldodecocido.jpg'),
+  'tortilladepatatas.jpg': require('../../assets/products/tortilladepatatas.jpg'),
+  'fabadapreparada.jpg': require('../../assets/products/fabadapreparada.jpg'),
+  'lentejaspreparadas.jpg': require('../../assets/products/lentejaspreparadas.jpg'),
+  'garbanzospreparados.jpg': require('../../assets/products/garbanzospreparados.jpg'),
+  'detergente.jpg': require('../../assets/products/detergente.jpg'),
+  'jabonliquido.jpg': require('../../assets/products/jabonliquido.jpg'),
+  'suavizante.jpg': require('../../assets/products/suavizante.jpg'),
+  'limpiacristales.jpg': require('../../assets/products/limpiacristales.jpg'),
+  'desodorantehombre.jpg': require('../../assets/products/desodorantehombre.jpg'),
+  'desodorantemujer.jpg': require('../../assets/products/desodorantemujer.jpg'),
+  'coloniafresca.jpg': require('../../assets/products/coloniafresca.jpg'),
+  'toallitas.jpg': require('../../assets/products/toallitas.jpg'),
+  'papelhigienico.jpg': require('../../assets/products/papelhigienico.jpg'),
+  }
 
 const cards = [{
   "categoria": "lacteos",
@@ -141,7 +206,7 @@ const cards = [{
 }, {
   "categoria": "bebidas",
   "producto": "zumo pi\u00f1a",
-  "imagen": "zumopina.jpg"
+  "imagen": "zumopina.jpg",
 }, {
   "categoria": "bebidas",
   "producto": "agua",
@@ -165,7 +230,7 @@ const cards = [{
 }, {
   "categoria": "charcuteria",
   "producto": "alas de pollo",
-  "imagen": "alasdepolo.jpg"
+  "imagen": "alasdepollo.jpg"
 }, {
   "categoria": "charcuteria",
   "producto": "pechuga de pollo",
@@ -183,7 +248,7 @@ const cards = [{
   "producto": "jamon",
   "imagen": "jamon.jpg"
 }, {
-  "categoria": "charcuteria",
+  "categoria": "charcuteria", 
   "producto": "carne picada cerdo",
   "imagen": "carnepicadacerdo.jpg"
 }, {
@@ -254,22 +319,31 @@ const cards = [{
 ]
 
 
+export enum CardsEnum { categoryCard1, categoryCard2, categoryCard3, categoryCard4, categoryCard5, categoryCard6, }
+
+interface CardProps { cagtegoria: string, imagen:string, producto:string }
+
+
 const ListItems = () => {
+  
   const y = new Animated.Value(0);
   const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y } } }], {
     useNativeDriver: true,
   });
+  
   return (
-    <AnimatedFlatList
-      scrollEventThrottle={16}
-      bounces={true}
-      data={cards}
-      renderItem={({ index, item: { type } }) => (
-        <WalletCard {...{ index, y, type }} />
-      )}
-      keyExtractor={(item) => item.index}
-      {...{ onScroll }}
-    />
+    <>
+      <AnimatedFlatList
+        scrollEventThrottle={16}
+        bounces={true}
+        data={cards}
+        renderItem={({ index, item: { categoria, imagen, producto } }) => (
+          <WalletCard {...{ index, y, categoria, imagen, producto }} />
+        )}
+        keyExtractor={(item,producto) => producto}
+        {...{ onScroll }}
+      />
+    </>
   );
 };
 

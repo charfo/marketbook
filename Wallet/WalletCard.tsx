@@ -1,14 +1,13 @@
 import React from "react";
 import { Animated, Dimensions, StyleSheet, View } from "react-native";
 import Card, {
-  Cards,
   CARD_HEIGHT as DEFAULT_CARD_HEIGHT,
 } from "../Transformations/components/Card";
 
 export const MARGIN = 16;
-export const CARD_HEIGHT = DEFAULT_CARD_HEIGHT + MARGIN * 2;
+export const CARD_HEIGHT = DEFAULT_CARD_HEIGHT;
 const { height: wHeight } = Dimensions.get("window");
-const height = wHeight - 64;
+const height = wHeight - 256;
 const styles = StyleSheet.create({
   card: {
     marginVertical: MARGIN,
@@ -19,10 +18,12 @@ const styles = StyleSheet.create({
 interface WalletCardProps {
   y: Animated.Value;
   index: number;
-  type: Cards;
+  producto: string;
+  categoria: string;
+  imagen: string;
 }
 
-const WalletCard = ({ type, y, index }: WalletCardProps) => {
+const WalletCard = ({ producto, categoria, imagen, y, index }: WalletCardProps) => {
   const position = Animated.subtract(index * CARD_HEIGHT, y);
   const isDisappearing = -CARD_HEIGHT;
   const isTop = 0;
@@ -57,7 +58,7 @@ const WalletCard = ({ type, y, index }: WalletCardProps) => {
       style={[styles.card, { opacity, transform: [{ translateY }, { scale }] }]}
       key={index}
     >
-      <Card {...{ type }} />
+      <Card {...{ producto, categoria, imagen }} />
     </Animated.View>
   );
 };
